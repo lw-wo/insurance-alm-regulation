@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F5EEDC">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23B08F1C'/%3E%3Crect x='6' y='14' width='20' height='4' rx='2' fill='%23FFFCF4'/%3E%3Crect x='14' y='6' width='4' height='20' rx='2' fill='%23FFFCF4'/%3E%3C/svg%3E">
+<title>保险资管资产负债管理新规 · 大白话解读</title>
+<style>
+/* ============ 设计令牌 ============
+   配色经 validate_palette.js 校验通过：
+   #B08F1C,#1F7A4D,#B3261E —— CVD 分离度 deutan ΔE 6.2
+   （6–8 合法区间，前提是状态色必须配「图标+文字」，本页已全部满足）
+   对比度实测：金色 #B08F1C 仅 2.67–3.02:1 → 禁用作文本，仅用于图形/边框；
+   金色文字一律用深金 #8A6D12（4.79:1）。
+   ==================================== */
+:root{
+  --bg:#F5EEDC; --card:#FFFCF4; --card2:#FBF5E6;
+  --ink:#2B2012; --ink2:#6B5B3E;
+  --gold:#B08F1C; --gold-ink:#8A6D12; --gold-soft:#EFE2BC;
+  --border:#E8D9B6;
+  --safe:#1F7A4D; --safe-bg:#E7F2EA;
+  --danger:#B3261E; --danger-bg:#FAE9E7;
+  --r:14px;
+  --shadow:0 1px 3px rgba(43,32,18,.06),0 6px 18px rgba(43,32,18,.05);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Source Han Sans SC",sans-serif;
+  font-size:16px;line-height:1.75;
+  padding:0 0 env(safe-area-inset-bottom);
+}
+.wrap{max-width:720px;margin:0 auto;padding:0 18px 72px}
+
+/* ---------- 通用 ---------- */
+h1,h2,h3{line-height:1.35;margin:0}
+strong{color:var(--ink);font-weight:700}
+.hl{background:linear-gradient(transparent 62%,var(--gold-soft) 62%);padding:0 2px;font-weight:700}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.94em}
+
+section{margin:44px 0 0;scroll-margin-top:16px}
+.sec-h{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
+.sec-n{flex:0 0 auto;font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--gold-ink);
+  border:1.5px solid var(--gold);border-radius:6px;padding:1px 7px;line-height:1.6}
+.sec-t{font-size:20px;font-weight:800;letter-spacing:.01em}
+.sec-sub{color:var(--ink2);font-size:14.5px;margin:2px 0 18px}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  padding:18px 17px;box-shadow:var(--shadow);margin-bottom:14px}
+
+/* ---------- 首屏 ---------- */
+.hero{padding:36px 0 4px}
+.eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;
+  color:var(--gold-ink);background:var(--gold-soft);border-radius:99px;padding:4px 13px}
+.hero h1{font-size:30px;font-weight:900;letter-spacing:-.01em;margin:14px 0 0}
+.hero .sub{color:var(--ink2);font-size:15px;margin-top:8px}
+.oneline{margin-top:20px;background:var(--card);border:1px solid var(--border);
+  border-left:5px solid var(--gold);border-radius:var(--r);padding:17px 18px;box-shadow:var(--shadow)}
+.oneline .lb{font-size:12px;font-weight:800;letter-spacing:.1em;color:var(--gold-ink);margin-bottom:6px}
+.oneline p{margin:0;font-size:17.5px;font-weight:700;line-height:1.7}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chip{font-size:13px;background:var(--card2);border:1px solid var(--border);
+  border-radius:99px;padding:5px 12px;color:var(--ink2)}
+.chip b{color:var(--ink);font-weight:700}
+
+/* ---------- 三件事 ---------- */
+.three{display:grid;gap:12px}
+.t3{background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  padding:16px 17px;box-shadow:var(--shadow);display:flex;gap:13px}
+.t3 .num{flex:0 0 30px;height:30px;border-radius:50%;background:var(--gold-soft);
+  color:var(--gold-ink);font-weight:900;font-size:15px;display:flex;align-items:center;justify-content:center}
+.t3 .bd{flex:1;min-width:0}
+.t3 h3{font-size:16px;font-weight:800;margin-bottom:3px}
+.t3 p{margin:0;font-size:14.5px;color:var(--ink2);line-height:1.7}
+
+/* ---------- 三个匹配 ---------- */
+.match{background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  padding:17px;box-shadow:var(--shadow);margin-bottom:14px}
+.match-h{display:flex;align-items:center;gap:9px;margin-bottom:4px}
+.match-h svg{flex:0 0 22px;color:var(--gold)}
+.match-h h3{font-size:16.5px;font-weight:800}
+.match .desc{font-size:14.5px;color:var(--ink2);margin:0 0 14px}
+.diag{background:var(--card2);border-radius:10px;padding:13px 13px 11px;margin-bottom:10px}
+.diag .cap{font-size:11.5px;font-weight:800;letter-spacing:.05em;color:var(--ink2);margin-bottom:9px}
+.row{display:flex;align-items:center;gap:9px;margin-bottom:7px}
+.row .k{flex:0 0 62px;font-size:12.5px;color:var(--ink2);text-align:right;line-height:1.4}
+.row .track{flex:1;min-width:0;height:22px;background:#EDE3CB;border-radius:5px;position:relative;overflow:hidden}
+.bar{position:absolute;top:0;bottom:0;left:0;border-radius:5px;
+  transform-origin:left center;transform:scaleX(0);transition:transform .85s cubic-bezier(.22,.8,.3,1)}
+.in .bar{transform:scaleX(1)}
+.bar.lia{background:linear-gradient(90deg,#8C7A4E,#A89055)}
+.bar.zib{background:linear-gradient(90deg,#C9B67A,#D8C58C)}
+.bar.win{background:linear-gradient(90deg,#2E8B5A,#1F7A4D)}
+.bar.lose{background:linear-gradient(90deg,#C7483F,#B3261E)}
+.row .v{flex:0 0 auto;font-size:12.5px;font-weight:700;font-variant-numeric:tabular-nums;min-width:44px}
+.row .v.ok{color:var(--safe)}
+.row .v.bad{color:var(--danger)}
+.verdict{display:flex;align-items:center;gap:7px;font-size:13.5px;font-weight:700;margin-top:9px}
+.verdict.ok{color:var(--safe)} .verdict.bad{color:var(--danger)}
+.verdict svg{flex:0 0 15px}
+
+/* ---------- 指标卡 ---------- */
+.ind{background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  padding:17px;box-shadow:var(--shadow);margin-bottom:14px;position:relative;overflow:hidden}
+.ind::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--gold)}
+.ind-h{display:flex;align-items:flex-start;gap:10px;margin-bottom:2px}
+.ind-h h3{font-size:17px;font-weight:800;flex:1}
+.pill{flex:0 0 auto;font-size:11.5px;font-weight:800;border-radius:99px;padding:3px 9px;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:4px}
+.pill.safe{background:var(--safe-bg);color:var(--safe)}
+.pill.danger{background:var(--danger-bg);color:var(--danger)}
+.pill svg{width:11px;height:11px}
+.formula{margin:11px 0 13px;background:var(--card2);border-radius:9px;padding:10px 12px;
+  font-size:13.5px;line-height:1.85;color:var(--ink);word-break:break-word}
+.formula .frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;
+  margin:0 4px;line-height:1.35;font-size:12.5px}
+.formula .frac .n{border-bottom:1.5px solid var(--gold);padding:0 6px 2px}
+.formula .frac .d{padding:2px 6px 0}
+.plain{font-size:14.5px;color:var(--ink2);line-height:1.75;margin:0 0 4px}
+.plain b{color:var(--ink)}
+.why{margin-top:11px;padding-top:11px;border-top:1px dashed var(--border);font-size:13.5px;color:var(--ink2)}
+.why b{color:var(--gold-ink)}
+
+/* ---------- 阈值仪表 ---------- */
+.gauge{margin:15px 0 4px}
+.g-track{position:relative;height:30px;border-radius:8px;overflow:hidden;background:#EDE3CB;
+  display:flex}
+.band{height:100%;display:flex;align-items:center;justify-content:center;
+  font-size:10.5px;font-weight:800;letter-spacing:.03em;opacity:0;transition:opacity .5s ease .25s}
+.in .band{opacity:1}
+.band.dg{background:repeating-linear-gradient(135deg,#F3D3CF,#F3D3CF 6px,#EBC3BE 6px,#EBC3BE 12px);color:#8E231C}
+.band.sf{background:repeating-linear-gradient(135deg,#D7EBDD,#D7EBDD 6px,#C8E3D1 6px,#C8E3D1 12px);color:#1A6440}
+.g-mark{position:absolute;top:-5px;bottom:-5px;width:3px;background:var(--ink);border-radius:2px;
+  left:0;transition:left .95s cubic-bezier(.22,.8,.3,1);box-shadow:0 0 0 2px rgba(255,252,244,.9)}
+.g-mark::after{content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:-6px;
+  width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid var(--ink)}
+.g-scale{display:flex;justify-content:space-between;font-size:11px;color:var(--ink2);margin-top:9px;
+  font-variant-numeric:tabular-nums}
+.g-note{font-size:12.5px;color:var(--ink2);text-align:center;margin-top:6px}
+.g-note b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbl{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--card)}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--r);
+  box-shadow:var(--shadow);-webkit-overflow-scrolling:touch}
+.tbl th,.tbl td{padding:10px 11px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+.tbl th{background:var(--card2);font-weight:800;font-size:12.5px;color:var(--ink2);
+  white-space:nowrap;letter-spacing:.02em}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td:first-child{font-weight:700}
+.tbl .y{color:var(--safe);font-weight:800}
+.tbl .n{color:var(--danger);font-weight:800}
+
+/* ---------- 对比双栏 ---------- */
+.vs{display:grid;gap:12px}
+@media(min-width:600px){.vs{grid-template-columns:1fr 1fr}}
+.vs-c{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px;
+  box-shadow:var(--shadow)}
+.vs-c.soft{border-top:4px solid #C9B67A}
+.vs-c.hard{border-top:4px solid var(--gold)}
+.vs-c h3{font-size:15.5px;font-weight:800;margin-bottom:2px}
+.vs-c .tagline{font-size:12.5px;color:var(--ink2);margin-bottom:12px}
+.kv{display:flex;gap:9px;font-size:13.5px;padding:7px 0;border-bottom:1px dashed var(--border)}
+.kv:last-child{border-bottom:none}
+.kv .kk{flex:0 0 58px;color:var(--ink2);font-size:12.5px}
+.kv .vv{flex:1;min-width:0}
+.kv .vv b{font-weight:800}
+
+/* ---------- OCI 动画 ---------- */
+.oci{display:grid;gap:10px}
+@media(min-width:560px){.oci{grid-template-columns:1fr 1fr}}
+.oci-box{background:var(--card2);border-radius:11px;padding:14px}
+.oci-box .t{font-size:13px;font-weight:800;margin-bottom:3px}
+.oci-box .s{font-size:11.5px;color:var(--ink2);margin-bottom:12px;line-height:1.5}
+.jag{height:52px;position:relative;border-bottom:1.5px solid var(--border);margin-bottom:8px}
+.jag svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.jag .ln{fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.oci-box.a .ln{stroke:var(--danger)}
+.oci-box.b .ln{stroke:var(--safe)}
+.pl-row{display:flex;align-items:center;gap:8px;font-size:12px;margin-top:6px}
+.pl-row .pl-k{flex:0 0 76px;color:var(--ink2)}
+.pl-row .pl-t{flex:1;height:11px;background:#EDE3CB;border-radius:3px;overflow:hidden}
+.pl-row .pl-b{height:100%;border-radius:3px;transform-origin:left;transform:scaleX(0);
+  transition:transform .8s cubic-bezier(.22,.8,.3,1)}
+.in .pl-b{transform:scaleX(1)}
+.pl-b.r{background:linear-gradient(90deg,#C7483F,#B3261E)}
+.pl-b.g{background:linear-gradient(90deg,#2E8B5A,#1F7A4D)}
+.pl-row .pl-v{flex:0 0 auto;font-size:11.5px;font-weight:800;font-variant-numeric:tabular-nums}
+
+/* ---------- 问答 ---------- */
+.qa{background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  margin-bottom:11px;box-shadow:var(--shadow);overflow:hidden}
+.qa summary{list-style:none;cursor:pointer;padding:15px 17px;display:flex;gap:11px;align-items:flex-start;
+  font-weight:800;font-size:15.5px;line-height:1.55;-webkit-user-select:none;user-select:none}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:0 0 22px;height:22px;margin-top:2px;border-radius:6px;background:var(--gold-soft);
+  color:var(--gold-ink);font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.qa summary .qt{flex:1;min-width:0}
+.qa summary .car{flex:0 0 auto;color:var(--gold-ink);transition:transform .25s ease;margin-top:4px}
+.qa[open] summary .car{transform:rotate(90deg)}
+.qa .ans{padding:0 17px 17px 50px;font-size:14.5px;line-height:1.8;color:var(--ink2)}
+.qa .ans p{margin:0 0 10px}
+.qa .ans p:last-child{margin-bottom:0}
+.qa .ans b{color:var(--ink)}
+.qa .ans ul{margin:0 0 10px;padding-left:19px}
+.qa .ans li{margin-bottom:6px}
+.qa .ans .key{background:var(--safe-bg);border-left:3px solid var(--safe);border-radius:0 7px 7px 0;
+  padding:9px 12px;margin:11px 0;color:var(--ink);font-weight:600}
+.qa .ans .warn{background:var(--danger-bg);border-left:3px solid var(--danger);border-radius:0 7px 7px 0;
+  padding:9px 12px;margin:11px 0;color:var(--ink)}
+.qa .ans .src{font-size:12px;color:var(--ink2);opacity:.85;margin-top:9px}
+
+/* ---------- 速查 ---------- */
+.gl{display:grid;gap:9px}
+.gl-i{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:13px 15px;
+  box-shadow:var(--shadow)}
+.gl-i dt{font-weight:800;font-size:14.5px;margin-bottom:3px;color:var(--ink)}
+.gl-i dd{margin:0;font-size:13.5px;color:var(--ink2);line-height:1.7}
+.gl-i dd em{font-style:normal;color:var(--gold-ink);font-weight:700}
+
+/* ---------- 时间线 ---------- */
+.tl{position:relative;padding-left:24px}
+.tl::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--gold-soft)}
+.tl-i{position:relative;padding-bottom:18px}
+.tl-i:last-child{padding-bottom:0}
+.tl-i::before{content:"";position:absolute;left:-22px;top:6px;width:11px;height:11px;border-radius:50%;
+  background:var(--card);border:2.5px solid var(--gold)}
+.tl-i .d{font-size:12.5px;font-weight:800;color:var(--gold-ink);letter-spacing:.02em}
+.tl-i .c{font-size:14.5px;color:var(--ink2);line-height:1.7}
+.tl-i .c b{color:var(--ink)}
+
+/* ---------- 动画 ---------- */
+.rise{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s cubic-bezier(.22,.8,.3,1)}
+.rise.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .rise{opacity:1;transform:none;transition:none}
+  .bar,.g-mark,.band,.pl-b{transition:none!important}
+  .bar{transform:scaleX(1)} .pl-b{transform:scaleX(1)} .band{opacity:1}
+}
+footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--border);
+  font-size:12.5px;color:var(--ink2);line-height:1.85}
+footer b{color:var(--ink)}
+.disc{background:var(--card2);border-radius:10px;padding:13px 15px;margin-bottom:14px;font-size:12.5px;
+  color:var(--ink2);line-height:1.75}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ══════════ 首屏 ══════════ -->
+<header class="hero">
+  <span class="eyebrow">监管制度解读 · 2026年第4号令</span>
+  <h1>保险资产负债<br>管理新规</h1>
+  <p class="sub">大白话版 · 一条一条拆给你看</p>
+
+  <div class="oneline">
+    <div class="lb">一 句 话 看 懂</div>
+    <p>以前，资产负债管理是保险公司<span class="hl">"凭自觉"</span>；<br>现在，它变成了一场<span class="hl">有分数线、要定期交卷的考试</span>——考不过，监管要约谈、要罚款。</p>
+  </div>
+
+  <div class="chips">
+    <span class="chip">公布 <b>2026-08-20</b></span>
+    <span class="chip">施行 <b>2027-01-01</b></span>
+    <span class="chip">共 <b>6章46条</b></span>
+    <span class="chip">废止 银保监发〔2019〕32号</span>
+  </div>
+</header>
+
+<!-- ══════════ 30秒版 ══════════ -->
+<section class="rise">
+  <div class="sec-h"><span class="sec-n">30秒</span><h2 class="sec-t">如果只记三件事</h2></div>
+  <p class="sec-sub">通勤路上只看得进这些，也够用了。</p>
+  <div class="three">
+    <div class="t3"><div class="num">1</div><div class="bd">
+      <h3>管的是"三个匹配"</h3>
+      <p>资产和负债要在<b>期限</b>、<b>成本收益</b>、<b>流动性</b>三个维度上对得上。全文所有指标，都是从这三件事长出来的。</p>
+    </div></div>
+    <div class="t3"><div class="num">2</div><div class="bd">
+      <h3>第一次有了"分数线"</h3>
+      <p>人身险 <b>4 项</b>、财产险 <b>3 项</b>监管指标，每一项都写死了最低标准。不是打分排名，是<b>及格线</b>。</p>
+    </div></div>
+    <div class="t3"><div class="num">3</div><div class="bd">
+      <h3>最硬的一条是"净投资收益覆盖率"</h3>
+      <p>只算票息、股息、租金，去覆盖<b>刚性</b>的保证成本，3 年周期，≥100%。这条最难糊弄，也最能说明新规的意图。</p>
+    </div></div>
+  </div>
+</section>
+
+<!-- ══════════ 为什么现在出 ══════════ -->
+<section class="rise">
+  <div class="sec-h"><span class="sec-n">背景</span><h2 class="sec-t">为什么偏偏是现在？</h2></div>
+  <p class="sec-sub">三个原因叠在一起，不出不行了。</p>
+
+  <div class="card">
+    <h3 style="font-size:16px;font-weight:800;margin-bottom:6px">① 低利率把"利差损"逼到了墙角</h3>
+    <p class="plain">过去保险公司靠<b>"短债长投"</b>赚期限利差——借短钱、投长资产。利率一路下行之后，这个模式玩不转了：<b>资产端收益率在往下掉，负债端成本却降不下来</b>，中间的空隙就是利差损。这是监管最担心的事。</p>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:16px;font-weight:800;margin-bottom:6px">② "新国十条"已经把话说在前面了</h3>
+    <p class="plain">2024年保险"新国十条"明确提出<b>"强化资产负债联动监管"</b>。这次的办法，就是把那句话从文件落到指标上——资产负债管理从<b>"公司自觉"升级为"监管硬约束"</b>。</p>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:16px;font-weight:800;margin-bottom:6px">③ 新会计准则放大了账面波动</h3>
+    <p class="plain">2026年保险业全面实施新会计准则（IFRS9/IFRS17）。资产端按公允价值计量后，<b>账面波动大幅放大</b>。监管指标必须和会计口径统一衔接，否则就会出现"<b>账上好看、实际错配</b>"的假象。</p>
+  </div>
+</section>
+
+<!-- ══════════ 三个匹配 ══════════ -->
+<section class="rise">
+  <div class="sec-h"><span class="sec-n">核心</span><h2 class="sec-t">三个匹配，全文的骨架</h2></div>
+  <p class="sec-sub">第四条原文列举的三项目标。看懂这三张图，后面所有指标都不用死记。</p>
+
+  <!-- 期限结构匹配 -->
+  <div class="match rise">
+    <div class="match-h">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+      <h3>① 期限结构匹配</h3>
+    </div>
+    <p class="desc">资产现金流和负债现金流，在<b>时间上要对得上</b>。防的是"借短投长"和"长钱短投"。</p>
+
+    <div class="diag">
+      <div class="cap">✅ 匹配 · 长期负债配长期资产</div>
+      <div class="row"><span class="k">负债</span><span class="track"><span class="bar lia" style="width:100%"></span></span><span class="v">30年</span></div>
+      <div class="row"><span class="k">资产</span><span class="track"><span class="bar zib" style="width:100%"></span></span><span class="v">30年</span></div>
+      <div class="verdict ok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        两边节奏一致，利率怎么动都不慌
+      </div>
+    </div>
+
+    <div class="diag">
+      <div class="cap">❌ 错配 · 长期负债配短期资产滚存</div>
+      <div class="row"><span class="k">负债</span><span class="track"><span class="bar lia" style="width:100%"></span></span><span class="v">30年</span></div>
+      <div class="row"><span class="k">资产</span><span class="track"><span class="bar lose" style="width:8%"></span></span><span class="v">1年</span></div>
+      <div class="row" style="margin-top:-3px"><span class="k"></span><span class="track" style="height:22px;background:none;display:flex;gap:2px">
+        <span class="bar lose" style="width:8%;position:static"></span>
+        <span class="bar lose" style="width:8%;position:static"></span>
+        <span class="bar lose" style="width:8%;position:static"></span>
+        <span class="bar lose" style="width:8%;position:static"></span>
+        <span class="bar lose" style="width:8%;position:static"></span>
+        <span class="bar lose" style="width:8%;position:static"></span>
+      </span><span class="v">滚存</span></div>
+      <div class="verdict bad">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        利率一降，负债成本降不了、资产收益跟着跌——两头吃亏
+      </div>
+    </div>
+    <p class="plain" style="font-size:12.5px;margin-top:2px">※ 图中期限为示意，用于演示机制。</p>
+  </div>
+
+  <!-- 成本收益匹配 -->
+  <div class="match rise">
+    <div class="match-h">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      <h3>② 成本收益匹配</h3>
+    </div>
+    <p class="desc">资产赚的钱，要能<b>盖住负债的成本</b>。防的是利差损。</p>
+
+    <div class="diag">
+      <div class="cap">✅ 有得赚</div>
+      <div class="row"><span class="k">资产收益</span><span class="track"><span class="bar win" style="width:70%"></span></span><span class="v ok">3.5%</span></div>
+      <div class="row"><span class="k">负债成本</span><span class="track"><span class="bar zib" style="width:60%"></span></span><span class="v">3.0%</span></div>
+      <div class="verdict ok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        多出 0.5 个点，是利润也是分红来源
+      </div>
+    </div>
+
+    <div class="diag">
+      <div class="cap">❌ 利差损</div>
+      <div class="row"><span class="k">资产收益</span><span class="track"><span class="bar lose" style="width:50%"></span></span><span class="v bad">2.5%</span></div>
+      <div class="row"><span class="k">负债成本</span><span class="track"><span class="bar zib" style="width:60%"></span></span><span class="v">3.0%</span></div>
+      <div class="verdict bad">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        倒亏 0.5 个点，只能拿自有资本补
+      </div>
+    </div>
+    <p class="plain" style="font-size:12.5px;margin-top:2px">※ 3.0%／2.5% 取自解读材料的举例；3.5% 为对照示意。</p>
+  </div>
+
+  <!-- 流动性匹配 -->
+  <div class="match rise">
+    <div class="match-h">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5S5.5 10 5.5 14.5a6.5 6.5 0 0013 0C18.5 10 12 2.5 12 2.5z"/></svg>
+      <h3>③ 流动性匹配</h3>
+    </div>
+    <p class="desc">短期要付钱的时候，<b>手里得拿得出钱</b>。防的是"资产是长期的、钱却短期要用"。</p>
+    <div class="diag">
+      <div class="cap">时间轴示意</div>
+      <div class="row"><span class="k">今天</span><span class="track"><span class="bar win" style="width:26%"></span></span><span class="v" style="color:var(--safe)">流动资产</span></div>
+      <div class="row"><span class="k"></span><span class="track" style="background:none">
+        <span style="position:absolute;left:26%;top:-4px;bottom:-4px;width:2px;background:var(--danger)"></span>
+      </span><span class="v bad">赔付时点</span></div>
+      <div class="row"><span class="k">未来</span><span class="track"><span class="bar zib" style="width:88%"></span></span><span class="v">长期资产</span></div>
+      <div class="verdict ok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        赔付时点之前，备够高流动性资产
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 人身险四项指标 ══════════ -->
+<section class="rise">
+  <div class="sec-h"><span class="sec-n">第30条</span><h2 class="sec-t">人身险：4 项硬指标</h2></div>
+  <p class="sec-sub">每项都有最低监管标准。仪表上的黑针标的是<b>监管底线</b>，不是某家公司的实际值。</p>
+
+  <!-- 指标1 -->
+  <div class="ind rise">
+    <div class="ind-h">
+      <h3>① 利率风险对冲率</h3>
+      <span class="pill safe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>区间指标</span>
+    </div>
+    <div class="formula">
+      利率风险对冲率 ＝
+      <span class="frac"><span class="n">现金流流入利率敏感度</span><span class="d">现金流流出利率敏感度</span></span>
+    </div>
+    <p class="plain"><b>大白话：</b>利率一动，资产端的"反应幅度"要和负债端对得上。</p>
+    <p class="plain">两边同向、同幅度反应 → 对冲率 <b>100%</b>，等于天然免疫；资产端反应只有负债端一半 → <b>50%</b>，踩到监管底线。</p>
+
+    <div class="gauge">
+      <div class="g-track">
+        <div class="band dg" style="width:25%">不达标</div>
+        <div class="band sf" style="width:50%">达标区间</div>
+        <div class="band dg" style="width:25%">过度对冲</div>
+        <div class="g-mark" data-pos="50"></div>
+      </div>
+      <div class="g-scale"><span>0%</span><span>100%</span><span>200%</span></div>
+      <div class="g-note">监管底线：<b>50% ～ 150% 之间</b></div>
+    </div>
+
+    <div class="why"><b>监管防什么：</b>资产负债利率风险"裸奔"——负债是30年期的，资产却全配了1年期存单。<br>
+    <b>特别条款：</b>对冲率低于 <b>50%</b> 的公司，现金流<b>流入</b>端利率敏感度不得低于 <b>5%</b>。</div>
+  </div>
+
+  <!-- 指标2 -->
+  <div class="ind rise">
+    <div class="ind-h">
+      <h3>② 综合投资收益覆盖率</h3>
+      <span class="pill safe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>5年周期</span>
+    </div>
+    <div class="formula">
+      综合投资收益覆盖率 ＝
+      <span class="frac"><span class="n">综合投资收益</span><span class="d">负债资金成本</span></span>
+      <span style="white-space:nowrap">｜ 最低 <b>100%</b></span>
+    </div>
+    <p class="plain"><b>大白话：</b>把最近 <b>5 年</b>的投资收益和负债成本放一起算总账，看能不能覆盖。</p>
+    <p class="plain">一个关键细节：正式稿计算时<b>剔除了 OCI 债券的公允价值变动</b>——只看"落袋的、稳定的"收益，不看账面浮盈浮亏。</p>
+
+    <div class="gauge">
+      <div class="g-track">
+        <div class="band dg" style="width:50%">不达标</div>
+        <div class="band sf" style="width:50%">达标</div>
+        <div class="g-mark" data-pos="50"></div>
+      </div>
+      <div class="g-scale"><span>0%</span><span>100%</span><span>200%</span></div>
+      <div class="g-note">监管底线：<b>不低于 100%</b></div>
+    </div>
+
+    <div class="why"><b>分母里有什么：</b>除了预定利率／保证成本，还包含分红险的保户红利、万能险的结算成本——<b>这两部分是可调的</b>。<br>
+    <b>为什么用5年：</b>保险资金是长钱，短期行情扰动大；5年维度才看得出真实的成本收益匹配水平，避免"一年牛市掩盖长期亏损"。</div>
+  </div>
+
+  <!-- 指标3 -->
+  <div class="ind rise">
+    <div class="ind-h">
+      <h3>③ 净投资收益覆盖率</h3>
+      <span class="pill danger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 4v6c0 5-3.9 9.2-9 10-5.1-.8-9-5-9-10V6l9-4z"/></svg>3年 · 最硬</span>
+    </div>
+    <div class="formula">
+      净投资收益覆盖率 ＝
+      <span class="frac"><span class="n">净投资收益（票息＋股息＋租金）</span><span class="d">负债保证成本</span></span>
+      <span style="white-space:nowrap">｜ 最低 <b>100%</b></span>
+    </div>
+    <p class="plain"><b>大白话：</b>全办法最硬的一条。分子只算<b>最稳定、最能落袋</b>的收益——利息、股息、租金，不含公允价值变动、不含买卖价差；分母是预定利率、最低保证利率对应的<b>刚性成本</b>。</p>
+
+    <div class="gauge">
+      <div class="g-track">
+        <div class="band dg" style="width:50%">不达标</div>
+        <div class="band sf" style="width:50%">达标</div>
+        <div class="g-mark" data-pos="50"></div>
+      </div>
+      <div class="g-scale"><span>0%</span><span>100%</span><span>200%</span></div>
+      <div class="g-note">监管底线：<b>不低于 100%</b></div>
+    </div>
+
+    <div class="why"><b>监管防什么：</b>利率下行 ＋ 存量高票息资产陆续到期再投资，净投资收益被持续侵蚀，而刚性保证成本降不下来——这是<b>长期利差损风险的核心来源</b>。<br>
+    <b>为什么最硬：</b>分子分母<b>两头都不能调</b>。分母只能靠老保单自然到期慢慢降。</div>
+  </div>
+
+  <!-- 指标4 -->
+  <div class="ind rise">
+    <div class="ind-h">
+      <h3>④ 流动性覆盖率</h3>
+      <span class="pill safe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>短期</span>
+    </div>
+    <div class="formula">流动性覆盖率 ｜ 最低 <b>100%</b>，计算方法按流动性风险监管规则执行</div>
+    <p class="plain"><b>大白话：</b>短期（比如未来90天）需要支付的时候，手里的高流动性资产能不能覆盖净现金流出。</p>
+    <div class="why"><b>监管防什么：</b>"资产是长期的、钱却短期要用"的流动性危机。</div>
+  </div>
+</section>
+
+<!-- ══════════ 财险三项 ══════════ -->
+<section class="rise">
+  <div class="sec-h"><span class="sec-n">第29条</span><h2 class="sec-t">财产险：3 项硬指标</h2></div>
+  <p class="sec-sub">逻辑比人身险简单，一句话能说清一项。</p>
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>指标</th><th>公式</th><th>底线</th><th>防什么</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>沉淀资金覆盖率</td>
+          <td class="mono">沉淀资金 ÷ 中长期资产</td>
+          <td class="y">≥100%</td>
+          <td>防止以短期业务为主的财险公司<b>拿短期资金做长期投资</b>（短钱长投）</td>
+        </tr>
+        <tr>
+          <td>收入覆盖率</td>
+          <td class="mono">(保险服务收入＋综合投资收益) ÷ 综合成本</td>
+          <td class="y">≥100%</td>
+          <td>综合收入能否覆盖综合成本</td>
+        </tr>
+        <tr>
+          <td>流动性覆盖率</td>
+          <td class="mono">按流动性风险监管规则计算</td>
+          <td class="y">≥100%</td>
+          <td>短期支付能力</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="plain" style="font-size:12.5px;margin-top:9px">另：财险公司还应<b>建立沉淀资金预测与管理评估机制</b>（第十六条）。</p>
+</section>
+
+<!-- ══════════ 为什么高股息变香 ══════════ -->
+<section class="rise">
+  <div class="sec-h"><span class="sec-n">重点</span><h2 class="sec-t">为什么"高股息"突然变香了？</h2></div>
+  <p class="sec-sub">这是新规最受市场关注的一条推论，也是理解 OCI 的最好切口。</p>
+
+  <div class="card">
+    <p class="plain" style="margin-bottom:14px"><b>先把 OCI 搞懂。</b>OCI（其他综合收益）是资产负债表上的一个"<b>影子科目</b>"：浮盈浮亏先记在这里，<b>不进当期利润表</b>；等资产卖出或减值，才结转进利润。所以 OCI 像一个"缓冲池"，把市场波动挡在利润表之外。</p>
+
+    <div class="oci">
+      <div class="oci-box a rise">
+        <div class="t">放在 FVTPL：利润表坐过山车</div>
+        <div class="s">波动<i>直接进</i>当期利润</div>
+        <div class="jag">
+          <svg viewBox="0 0 200 52" preserveAspectRatio="none"><path class="ln" d="M0,26 L20,10 L40,40 L60,14 L80,44 L100,12 L120,42 L140,16 L160,42 L180,20 L200,32"/></svg>
+        </div>
+        <div class="pl-row"><span class="pl-k">利润表波动</span><span class="pl-t"><span class="pl-b r" style="width:92%"></span></span><span class="pl-v" style="color:var(--danger)">大</span></div>
+      </div>
+      <div class="oci-box b rise">
+        <div class="t">放在 FVOCI：利润表平平的</div>
+        <div class="s">波动进 OCI，<i>不进</i>利润表</div>
+        <div class="jag">
+          <svg viewBox="0 0 200 52" preserveAspectRatio="none"><path class="ln" d="M0,28 L200,24"/></svg>
+        </div>
+        <div class="pl-row"><span class="pl-k">利润表波动</span><span class="pl-t"><span class="pl-b g" style="width:22%"></span></span><span class="pl-v" style="color:var(--safe)">小</span></div>
+      </div>
+    </div>
+
+    <p class="plain" style="margin-top:15px"><b>举个具体的例子（取自解读材料）：</b>你手里有一只高股息股票，买入价 10 元，涨到 12 元。</p>
+    <p class="plain">· <b>FVTPL 下</b>：那 2 元浮盈直接算当期利润；股价跌回 10 元，利润又少 2 元——利润表跟着股价坐过山车。<br>
+    · <b>FVOCI 下</b>：2 元浮盈先进 OCI，利润表只记<b>股息收入</b>，股价波动不影响利润。这就是"<b>平滑</b>"。</p>
+
+    <div class="why" style="margin-top:14px"><b>平滑的本质：</b>把本应剧烈波动的损益，用会计分类和估值方法"抹平"到多个期间。对保险公司来说——<b>利润稳定 ＝ 分红能力稳定 ＝ 偿付能力稳定 ＝ 监管指标稳定</b>。</p></div>
+  </div>
+
+  <div class="card" style="border-left:5px solid var(--gold)">
+    <h3 style="font-size:16.5px;font-weight:800;margin-bottom:10px">三个逻辑串起来，结论就出来了</h3>
+    <div style="display:flex;gap:12px;margin-bottom:12px">
+      <span style="flex:0 0 22px;height:22px;border-radius:50%;background:var(--gold-soft);color:var(--gold-ink);font-weight:900;font-size:12px;display:flex;align-items:center;justify-content:center">1</span>
+      <p class="plain" style="flex:1;margin:0"><b>净投资收益覆盖率（3年）</b>的分子只算股息＋票息＋租金——高股息股票的<b>股息直接进分子</b>，帮你达标。</p>
+    </div>
+    <div style="display:flex;gap:12px;margin-bottom:12px">
+      <span style="flex:0 0 22px;height:22px;border-radius:50%;background:var(--gold-soft);color:var(--gold-ink);font-weight:900;font-size:12px;display:flex;align-items:center;justify-content:center">2</span>
+      <p class="plain" style="flex:1;margin:0"><b>综合投资收益覆盖率（5年）</b>剔除了 OCI<b>债券</b>的浮盈浮亏——但 OCI<b>股票</b>的浮盈和处置损益是计入综合投资收益的，而且它波动不影响利润表。</p>
+    </div>
+    <div style="display:flex;gap:12px;margin-bottom:14px">
+      <span style="flex:0 0 22px;height:22px;border-radius:50%;background:var(--gold-soft);color:var(--gold-ink);font-weight:900;font-size:12px;display:flex;align-items:center;justify-content:center">3</span>
+      <p class="plain" style="flex:1;margin:0"><b>会计上</b>高股息股票放 FVOCI：股息进利润表，股价波动进 OCI，卖出才结转——<b>利润表平滑</b>。</p>
+    </div>
+    <div class="key" style="background:var(--safe-bg);border-left:3px solid var(--safe);border-radius:0 8px 8px 0;padding:11px 13px;font-weight:700">
+      华泰固收原话："<b>高股息 OCI 股票严格优于低票息利率债</b>。"
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 两覆盖率对比 ══════════ -->
+<section class="rise">
+  <div class="sec-h"><span class="sec-n">对比</span><h2 class="sec-t">两个覆盖率，差在哪？</h2></div>
+  <p class="sec-sub">名字很像，脾气完全不同。一个能商量，一个没得商量。</p>
+
+  <div class="vs">
+    <div class="vs-c soft rise">
+      <h3>综合投资收益覆盖率</h3>
+      <div class="tagline">弹性约束 · 承压时能调</div>
+      <div class="kv"><span class="kk">周期</span><span class="vv"><b>5 年</b></span></div>
+      <div class="kv"><span class="kk">分子</span><span class="vv">综合投资收益<br><span style="font-size:12.5px;color:var(--ink2)">剔除 OCI 债公允价值变动</span></span></div>
+      <div class="kv"><span class="kk">分母</span><span class="vv">负债资金成本<br><span style="font-size:12.5px;color:var(--ink2)">含分红／万能结算，<b style="color:var(--safe)">可调</b></span></span></div>
+      <div class="kv"><span class="kk">性质</span><span class="vv">承压时可下调分红实现率和万能结算利率来达标</span></div>
+    </div>
+    <div class="vs-c hard rise">
+      <h3>净投资收益覆盖率</h3>
+      <div class="tagline">刚性约束 · 只能慢慢磨</div>
+      <div class="kv"><span class="kk">周期</span><span class="vv"><b>3 年</b></span></div>
+      <div class="kv"><span class="kk">分子</span><span class="vv">净投资收益<br><span style="font-size:12.5px;color:var(--ink2)">票息＋股息＋租金</span></span></div>
+      <div class="kv"><span class="kk">分母</span><span class="vv">负债保证成本<br><span style="font-size:12.5px;color:var(--ink2)">预定／最低保证利率，<b style="color:var(--danger)">刚性</b></span></span></div>
+      <div class="kv"><span class="kk">性质</span><span class="vv">只能靠老保单自然到期慢慢降成本</span></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <p class="plain" style="margin:0"><b>记住这个不对称：</b>两个指标的分母，一个是软的、一个是硬的。所以真正决定长期生死的是——<b>净投资收益覆盖率</b>。</p>
+  </div>
+</section>
+
+<!-- ══════════ 客户问答 ══════════ -->
+<section class="rise">
+  <div class="sec-h"><span class="sec-n">重点</span><h2 class="sec-t">客户会问什么 → 你怎么答</h2></div>
+  <p class="sec-sub">点开每一张卡片看答案。答案里都标了法规出处，被追问时可以直接报条文号。</p>
+
+  <details class="qa"><summary><span class="qn">1</span><span class="qt">这办法是管谁的？</span><span class="car">›</span></summary>
+  <div class="ans">
+    <p>管<b>保险公司自己</b>，在<b>法人层面</b>算指标。财产险、人身险都管。</p>
+    <p>另外，政策性保险公司、相互保险组织、自保公司、外国保险公司分公司<b>参照适用</b>；未设董事会的外国保险公司分公司，由高级管理层履行董事会职责。</p>
+    <p class="src">出处：第四条、第二十八条、第四十二条</p>
+  </div></details>
+
+  <details class="qa"><summary><span class="qn">2</span><span class="qt">跟2019年那个老办法比，最大的变化是什么？</span><span class="car">›</span></summary>
+  <div class="ans">
+    <p>从<b>"能力评估＋量化评分"</b>升级成了<b>"定量指标硬约束"</b>。</p>
+    <p>老办法（银保监发〔2019〕32号）更多是评估和打分；新办法直接给人身险 <b>4 项</b>、财险 <b>3 项</b>指标写死最低标准，不达标要监管谈话、发监管意见书、增加检查频率，还可以处罚。</p>
+    <div class="key">一句话：从"体检报告"变成了"及格线"。</div>
+    <p class="src">出处：本办法全文；第四十六条废止旧规</p>
+  </div></details>
+
+  <details class="qa"><summary><span class="qn">3</span><span class="qt">什么是"利差损"？为什么监管最怕它？</span><span class="car">›</span></summary>
+  <div class="ans">
+    <p>说白了就是<b>"赚的赶不上承诺的"</b>：保险公司承诺给客户保证利率（比如 3.0%），资产端实际只赚到 2.5%，中间那 0.5 个点就是亏损，得靠自有资本或未来收益补。</p>
+    <p><b>利率越低、承诺越高，利差损越大。</b>而且它会随着时间累积——这就是监管着急的原因。</p>
+    <div class="key">新规所有指标的设计，本质都是围绕"防利差损"展开的。</div>
+    <p class="src">出处：第四条成本收益匹配（"防范利差损风险"）</p>
+  </div></details>
+
+  <details class="qa"><summary><span class="qn">4</span><span class="qt">净投资收益覆盖率和综合投资收益覆盖率，到底差在哪？</span><span class="car">›</span></summary>
+  <div class="ans">
+    <p><b>分子分母都不同，而且"硬度"不同。</b></p>
+    <ul>
+      <li><b>综合（5年）</b>：分子含浮盈浮亏（但剔除 OCI 债公允价值变动），分母含分红／万能结算成本——<b>两项都能调</b>，是弹性约束。</li>
+      <li><b>净（3年）</b>：分子只算票息＋股息＋租金，分母是刚性保证成本——<b>都不能调</b>，是硬约束。</li>
+    </ul>
+    <div class="key">真正决定长期生死的是净投资收益覆盖率。</div>
+    <p class="src">出处：第三十条</p>
+  </div></details>
+
+  <details class="qa"><summary><span class="qn">5</span><span class="qt">为什么说高股息股票"变香"了？</span><span class="car">›</span></summary>
+  <div class="ans">
+    <p>三个逻辑串起来：</p>
+    <ul>
+      <li><b>股息直接进"净投资收益"</b>——也就是 3 年硬指标的分子，帮你达标；</li>
+      <li><b>高股息股票放 FVOCI</b>：股息进利润表，股价波动进 OCI 不进利润表，<b>利润平滑</b>；</li>
+      <li><b>反过来看低票息利率债</b>：票息贡献低，在净投资收益覆盖率上帮不上忙。</li>
+    </ul>
+    <div class="key">华泰固收原话："高股息 OCI 股票严格优于低票息利率债。"</div>
+    <p class="src">出处：华泰固收研报（2026-08-24）；第三十条</p>
+  </div></details>
+
+  <details class="qa"><summary><span class="qn">6</span><span class="qt">客户问"年底到底能不能分红"，怎么答？</span><span class="car">›</span></summary>
+  <div class="ans">
+    <p><b>分两层看：</b></p>
+    <p><b>短期看综合投资收益覆盖率（5年）</b>——它的分母包含分红险保户红利和万能结算成本，是<b>可调的</b>。投资收益能覆盖含分红的负债成本，分红就有空间；覆盖不了，指标压力会倒逼下调分红实现率和结算利率。</p>
+    <p><b>长期看净投资收益覆盖率（3年）</b>——分母是刚性保证成本。票息＋股息＋租金能不能守住它，决定分红能力<b>能不能持续</b>。</p>
+    <div class="warn">注意一个微妙之处：指标承压时下调分红实现率，<b>既是压力，也是行业"名正言顺下调分红"的合规出口</b>。答客户时这层要讲透。</div>
+    <p class="src">出处：第三十条；华泰固收研报</p>
+  </div></details>
+
+  <details class="qa"><summary><span class="qn">7</span><span class="qt">对债券投资有什么影响？</span><span class="car">›</span></summary>
+  <div class="ans">
+    <ul>
+      <li><b>长久期利率债仍是刚需</b>（期限结构匹配要求），但"合理匹配"取代了"激进拉久期"。</li>
+      <li><b>高票息品种价值上升</b>：超长地方债相对国债的利差、长久期高等级信用债、非标替代品。</li>
+      <li><b>卖盘意愿下降</b>：卖出高票息老券的价差<b>不计入</b>净投资收益，卖掉之后票息也没了——长债换手率承压。</li>
+      <li><b>利率衍生品打开空间</b>：国债期货多头、IRS 收固定这类工具可以"合成久期"，<b>名义本金入公式、资金占用极低</b>，意味着可以少买现券、多用衍生品满足对冲要求。</li>
+    </ul>
+    <p class="src">出处：华泰固收研报；第三十条</p>
+  </div></details>
+
+  <details class="qa"><summary><span class="qn">8</span><span class="qt">什么时候开始考核？会不会很急？</span><span class="car">›</span></summary>
+  <div class="ans">
+    <p>不急，但有个<b>容易踩的坑</b>：</p>
+    <ul>
+      <li>2027年1月1日起施行；不达标公司可申请<b>最长 3 年过渡期</b>，达标规划经董事会批准后于 <b>2027年3月底前</b>报送。</li>
+      <li>季度报告：季度结束后 <b>30 日内</b>；年度报告：次年 <b>4月30日前</b>，且<b>须经独立三方审核机构核验</b>。</li>
+    </ul>
+    <div class="warn">首次报送是 <b>2026年四季度报告和 2026年年度报告</b>——这是<b>回溯口径</b>，也就是说 2026 年内的配置调整<b>改变不了</b>首次考核结果。</div>
+    <p class="src">出处：第三十五条、第三十六条；答记者问及实施通知</p>
+  </div></details>
+
+  <details class="qa"><summary><span class="qn">9</span><span class="qt">不达标会怎样？</span><span class="car">›</span></summary>
+  <div class="ans">
+    <p>监管可以采取（第三十九条）：</p>
+    <ul>
+      <li>与董事会、高级管理层<b>监督管理谈话</b>，要求限期达标；</li>
+      <li>下发<b>监管意见书</b>；</li>
+      <li>要求做<b>更严格的压力测试</b>、提交更有效的改善计划；</li>
+      <li>要求增加报告内容、<b>提高报告频率</b>；</li>
+      <li>增加<b>现场检查</b>的内容、范围与频率。</li>
+    </ul>
+    <p>到期整改不到位，监管可依法要求<b>调整保险业务结构或资产配置结构</b>（第四十条）——这一条最有实质杀伤力。</p>
+    <p><b>罚款（第四十一条）：</b>一般情形，对机构及相关责任人警告、通报批评、<b>十万元以下</b>罚款；危害金融安全且有危害后果的，<b>二十万元以下</b>罚款。此外，资产负债管理能力评估结果<b>纳入监管评级</b>（第三十七条）。</p>
+    <p class="src">出处：第三十七条、第三十九条、第四十条、第四十一条</p>
+  </div></details>
+
+  <details class="qa"><summary><span class="qn">10</span><span class="qt">什么是 OCI？为什么叫"平滑工具"？</span><span class="car">›</span></summary>
+  <div class="ans">
+    <p>OCI ＝ 其他综合收益，是资产负债表上的"<b>影子科目</b>"：浮盈浮亏先记这里，<b>不进当期利润表</b>；等卖出或减值，才结转进利润表。</p>
+    <p><b>举个例子：</b>高股息股票买入价 10 元，涨到 12 元——</p>
+    <ul>
+      <li><b>FVTPL 下</b>：2 元浮盈直接算当期利润，跌回去利润又少 2 元，利润表坐过山车；</li>
+      <li><b>FVOCI 下</b>：2 元先进 OCI，利润表只记股息，股价波动不影响利润。</li>
+    </ul>
+    <div class="key">这就是"平滑"——把本该剧烈波动的损益，抹平到多个期间。</div>
+    <p class="src">出处：IFRS9；华泰固收研报</p>
+  </div></details>
+
+  <details class="qa"><summary><span class="qn">11</span><span class="qt">这套指标跟"偿付能力"是一回事吗？</span><span class="car">›</span></summary>
+  <div class="ans">
+    <p><b>不是一回事，但挂上了钩。</b>资产负债管理是"资产和负债配不配"，偿付能力是"资本够不够"。新规明确把<b>资产负债匹配指标和能力建设情况纳入保险公司监管评级</b>——所以两者会互相影响，但报送口径和计算主体不同。</p>
+    <p class="src">出处：第三十七条</p>
+  </div></details>
+
+  <details class="qa"><summary><span class="qn">12</span><span class="qt">"重大投资"是怎么定义的？跟我们展业有关系吗？</span><span class="car">›</span></summary>
+  <div class="ans">
+    <p>有，而且这条很实际。第二十一条定义<b>重大投资</b>为：单一重大股权投资、单一重大股票投资或上市公司收购、以物权或项目公司股权形式持有的单一投资性不动产，<b>或对单一标的资产累计投资金额高于公司上一季度末总资产 3% 或 30 亿元人民币</b>（或等值外币）的投资。</p>
+    <p>重大投资决策前，必须评估分析其对资产负债匹配状况的影响。</p>
+    <p><b>但注意除外项</b>——以下不算：投资境内中央政府债券、省级政府债券、准政府债券、政策性金融债，以及银行存款、现金及流动性管理工具。</p>
+    <p class="src">出处：第二十一条</p>
+  </div></details>
+
+  <details class="qa"><summary><span class="qn">13</span><span class="qt">我们是受托人（保险资管公司），有什么新义务？</span><span class="car">›</span></summary>
+  <div class="ans">
+    <p>第二十二条专门讲了委托投资：</p>
+    <ul>
+      <li>保险公司应当向受托人<b>提供负债信息</b>——包括委托投资账户的<b>久期目标、投资收益率要求、现金流预期变化</b>等；</li>
+      <li>受托人应当向保险公司提供<b>资产配置政策执行情况</b>等信息；</li>
+      <li>受托人应当<b>配合保险公司开展资产负债匹配指标测算与分析工作</b>。</li>
+    </ul>
+    <div class="key">最后一条是硬性义务：产品端要能输出久期、现金流、利率敏感度、覆盖率测算。</div>
+    <p class="src">出处：第二十二条</p>
+  </div></details>
+</section>
+
+<!-- ══════════ 时间线 ══════════ -->
+<section class="rise">
+  <div class="sec-h"><span class="sec-n">节奏</span><h2 class="sec-t">时间表</h2></div>
+  <p class="sec-sub">哪些是已经发生的，哪些要盯。</p>
+  <div class="card">
+    <div class="tl">
+      <div class="tl-i"><div class="d">2026-08-20</div><div class="c">《办法》以<b>国家金融监督管理总局令2026年第4号</b>公布，共 6 章 46 条。</div></div>
+      <div class="tl-i"><div class="d">2026年内</div><div class="c">配置调整窗口——但注意<b>首次报送是回溯口径</b>，年内动作改变不了首次考核结果。</div></div>
+      <div class="tl-i"><div class="d">2027-01-01</div><div class="c">正式施行。同时废止《保险资产负债管理监管暂行办法》（银保监发〔2019〕32号）。</div></div>
+      <div class="tl-i"><div class="d">2027-03-31 前</div><div class="c">指标不达标的公司，<b>达标规划</b>经董事会批准后报送监管。</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 市场怎么看 ══════════ -->
+<section class="rise">
+  <div class="sec-h"><span class="sec-n">观点</span><h2 class="sec-t">市场怎么看</h2></div>
+  <p class="sec-sub">以下为公开研报观点摘录，供理解市场共识，不代表本人或所在机构立场。</p>
+
+  <div class="card">
+    <h3 style="font-size:15.5px;font-weight:800;margin-bottom:7px">华泰固收（2026-08-24）</h3>
+    <ul style="margin:0;padding-left:19px;font-size:14.5px;color:var(--ink2);line-height:1.8">
+      <li>长久期利率债仍是"刚需"，但匹配压力边际下降。</li>
+      <li>利率衍生品直接进久期分子，利好 30 年国债期货（TL）与长端 IRS。</li>
+      <li>两个覆盖率<b>分母不对称</b>：综合的分母可调，净的分母刚性——真正的长期硬约束是后者。</li>
+      <li>节奏判断：新规短期不构成债市交易层面的边际力量，影响体现在<b>中期品种结构</b>。</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:15.5px;font-weight:800;margin-bottom:7px">行业与配置判断</h3>
+    <ul style="margin:0;padding-left:19px;font-size:14.5px;color:var(--ink2);line-height:1.8">
+      <li>头部险企治理、系统、精算能力齐备，短期影响有限、长期优势放大；中小险企需补治理架构，靠 3 年过渡期缓释。</li>
+      <li>配置方向（国信证券观点）：低利率＋新准则下，险资通过资产负债联动强化收益稳定性——<b>拉长久期＋增配高股息蓝筹等稳定分红资产</b>。</li>
+      <li>"量没少、结构变了"：买债仍是刚需，但结构上从"<b>追收益</b>"转向"<b>控资本、控波动</b>"。</li>
+      <li>华创证券测算：2025年上市险企净投资收益率平均降幅约 <b>0.34 个百分点</b>，增配高股息是优先选择，当前存量高股息股欠配规模约 <b>2000 亿元</b>。</li>
+    </ul>
+    <p class="src" style="font-size:12px;color:var(--ink2);opacity:.85;margin:11px 0 0">⚠️ 上述测算为<i>券商研究观点</i>，非官方数据，引用时请注明来源。</p>
+  </div>
+</section>
+
+<!-- ══════════ 速查表 ══════════ -->
+<section class="rise">
+  <div class="sec-h"><span class="sec-n">速查</span><h2 class="sec-t">术语卡片</h2></div>
+  <p class="sec-sub">被客户问到名词，翻这里。</p>
+  <div class="gl">
+    <div class="gl-i"><dl style="margin:0"><dt>资产负债管理（ALM）</dt><dd>让资产端的收益／期限／流动性与负债端（保单义务）匹配的管理体系。<em>覆盖普通账户全部资产和负债。</em></dd></dl></div>
+    <div class="gl-i"><dl style="margin:0"><dt>久期</dt><dd>现金流的"平均回收时间"，近似衡量价格对利率的敏感度。<em>久期越长，越怕利率上升。</em>（30年国债久期约18–20年）</dd></dl></div>
+    <div class="gl-i"><dl style="margin:0"><dt>有效久期 vs 修正久期</dt><dd>有效久期额外考虑了含权因素（分红、万能、退保），<em>更接近真实风险，数值通常更低</em>。</dd></dl></div>
+    <div class="gl-i"><dl style="margin:0"><dt>利差损</dt><dd>资产端实际收益率低于负债端成本的亏损。<em>保险业最核心的风险</em>，新规指标都围绕它设计。</dd></dl></div>
+    <div class="gl-i"><dl style="margin:0"><dt>利率风险对冲率</dt><dd>现金流流入利率敏感度 ÷ 流出利率敏感度。<em>监管区间 50%–150%</em>；低于50%的，流入敏感度须不低于5%。</dd></dl></div>
+    <div class="gl-i"><dl style="margin:0"><dt>综合投资收益覆盖率</dt><dd>5年综合投资收益 ÷ 负债资金成本，≥100%。<em>剔除OCI债公允价值变动；分母含分红／结算，可调。</em></dd></dl></div>
+    <div class="gl-i"><dl style="margin:0"><dt>净投资收益覆盖率</dt><dd>3年净投资收益（票息＋股息＋租金）÷ 刚性保证成本，≥100%。<em>最硬的约束。</em></dd></dl></div>
+    <div class="gl-i"><dl style="margin:0"><dt>沉淀资金覆盖率（财险）</dt><dd>沉淀资金 ÷ 中长期资产 ≥100%。<em>防"短钱长投"。</em></dd></dl></div>
+    <div class="gl-i"><dl style="margin:0"><dt>OCI（其他综合收益）</dt><dd>不进利润表的"影子账户"，浮盈浮亏先放这里，卖出／减值才结转利润。<em>保险公司的"波动缓冲池"。</em></dd></dl></div>
+    <div class="gl-i"><dl style="margin:0"><dt>AC / FVOCI / FVTPL</dt><dd>IFRS9 三分类。<em>AC＝摊余成本（不盯市）｜FVOCI＝波动进OCI不进利润｜FVTPL＝波动直接进利润。</em></dd></dl></div>
+    <div class="gl-i"><dl style="margin:0"><dt>摊余成本法</dt><dd>按买入成本＋利息摊销记账，<em>净值平滑不随市价波动</em>，货币基金等使用。</dd></dl></div>
+    <div class="gl-i"><dl style="margin:0"><dt>保证成本</dt><dd>保单中约定的刚性最低回报（预定利率、最低保证利率），<em>无法人为下调</em>。对应净投资收益覆盖率的分母。</dd></dl></div>
+    <div class="gl-i"><dl style="margin:0"><dt>资金成本（负债资金成本）</dt><dd>含分红险红利、万能结算成本在内的整体负债成本，<em>相对可调</em>。</dd></dl></div>
+    <div class="gl-i"><dl style="margin:0"><dt>利差三 / 利差四（监测指标）</dt><dd>利差三＝会计投资收益率−负债保证成本率；利差四＝新增固定收益类资产到期收益率−新业务负债最低要求回报率。<em>不设硬标准，用于预警。</em></dd></dl></div>
+    <div class="gl-i"><dl style="margin:0"><dt>回溯机制</dt><dd>每年开展回溯分析，比对预期与实际偏差（保费收入、长期收益率、负债成本率等），对重大偏差采取改进措施。<em>第二十四条。</em></dd></dl></div>
+  </div>
+</section>
+
+<footer>
+  <div class="disc">
+    <b>免责与来源说明</b><br>
+    本页为个人学习整理，依据<b>公开法规原文</b>与<b>公开券商研报</b>编制，仅供学习交流，<b>不构成任何投资建议</b>。<br>
+    法规条文以国家金融监督管理总局正式发布文本为准；研报观点仅代表原作者，引用时请回原文核对。
+  </div>
+  <b>主要来源</b><br>
+    1. 《保险公司资产负债管理办法》（国家金融监督管理总局令2026年第4号，2026年8月20日公布，自2027年1月1日起施行），共6章46条 —— <i>条文引用均出自此文本</i><br>
+    2. 华泰固收、华创证券、国信证券相关公开研究报告观点（2026年8月）<br>
+    3. 视频：《深度解读｜保险行业重磅新规：资产负债管理新办法落地，底层逻辑拆解》（B站 BV1RFhP6mEg8）<br>
+    <br>
+    整理日期：2026-09-21
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.rise');
+
+  function activate(el){
+    el.classList.add('in');
+    // 阈值仪表：把指针推到目标位置
+    el.querySelectorAll('.g-mark').forEach(function(m){
+      var pos = parseFloat(m.getAttribute('data-pos') || '0');
+      if (reduce) { m.style.left = pos + '%'; return; }
+      requestAnimationFrame(function(){ m.style.left = pos + '%'; });
+    });
+  }
+
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(activate);
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { activate(e.target); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+
+  items.forEach(function(el){ io.observe(el); });
+
+  // 兜底：无论观察器是否触发，1.5秒后强制显示，避免内容被藏住
+  setTimeout(function(){ items.forEach(activate); }, 1500);
+})();
+</script>
+</body>
+</html>
