@@ -32,7 +32,9 @@ body{
   font-size:16px;line-height:1.75;
   padding:0 0 env(safe-area-inset-bottom);
 }
-.wrap{max-width:720px;margin:0 auto;padding:0 18px 72px}
+/* 满宽：内容铺满整个页面（原为 max-width:720px 居中，宽屏下两侧留白过大）。
+   两侧留白随视口收缩，手机上仍是 16px，不会贴边。 */
+.wrap{width:100%;max-width:none;margin:0;padding:0 clamp(16px,2.5vw,56px) 72px}
 
 /* ---------- 通用 ---------- */
 h1,h2,h3{line-height:1.35;margin:0}
